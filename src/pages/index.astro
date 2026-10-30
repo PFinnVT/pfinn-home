@@ -1,0 +1,81 @@
+---
+// The homepage. Projects come from src/data/projects.json,
+// log entries come from the .md files in src/content/log/.
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import projects from '../data/projects.json';
+
+const entries = (await getCollection('log')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const short = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+---
+<Base>
+  <header class="hero">
+    <h1>pfinn.org</h1>
+    <p class="tagline"><span>A notebook of what I’m learning while building websites.</span></p>
+    <p class="intro">I started with zero coding experience and a domain name. Each project here taught me something, and the log below keeps track of it.</p>
+  </header>
+
+  <section aria-labelledby="projects">
+    <h2 id="projects">Projects</h2>
+    <ul class="projects">
+      {projects.map((p) => (
+        <li>
+          <span class="note">{p.status}</span>
+          <h3>{p.url ? <a href={p.url}>{p.name}</a> : p.name}</h3>
+          <p>{p.description}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="log">
+    <h2 id="log">Learning log</h2>
+    <ol class="log">
+      {entries.map((e) => (
+        <li>
+          <time class="note" datetime={e.data.date.toISOString().slice(0, 10)}>{short(e.data.date)}</time>
+          <h3><a href={`/log/${e.id}/`}>{e.data.title}</a></h3>
+          <p>{e.data.summary}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .hero { margin-bottom: 64px; }
+  h1 {
+    font-size: clamp(2.8rem, 9vw, 4.75rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-variation-settings: "opsz" 96;
+  }
+  .tagline { margin: 14px 0 0; font-family: var(--hand); font-size: clamp(1.25rem, 3.4vw, 1.6rem); line-height: 1.5; }
+  /* a highlighter swipe across the whole line */
+  .tagline span {
+    color: var(--hl-ink);
+    background: linear-gradient(100deg, transparent 0.4em, var(--hl) 0.6em, var(--hl) calc(100% - 0.4em), transparent);
+    background-size: 100% 0.75em;
+    background-position: 0 72%;
+    background-repeat: no-repeat;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    padding: 0 0.2em;
+  }
+  .intro { max-width: 34em; margin: 20px 0 0; }
+  h2 { font-size: 1.6rem; font-weight: 700; margin: 0 0 20px; }
+  section + section { margin-top: 56px; }
+  ul, ol { list-style: none; margin: 0; padding: 0; }
+  li { position: relative; padding: 14px 0 16px; border-bottom: 1px dashed var(--grid); }
+  li:first-child { padding-top: 0; }
+  li:first-child .note { top: 2px; }
+  .note { top: 18px; }
+  h3 { font-size: 1.2rem; font-weight: 500; }
+  li p { margin: 4px 0 0; color: var(--pencil); max-width: 36em; }
+  @media (prefers-reduced-motion: no-preference) {
+    .tagline span { animation: swipe .9s .2s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes swipe { from { background-size: 0% 0.75em; } to { background-size: 100% 0.75em; } }
+  }
+</style>
