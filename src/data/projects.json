@@ -6,6 +6,12 @@
     "url": "https://sutton.pfinn.org"
   },
   {
+    "name": "Aly’s Design Book",
+    "status": "Live",
+    "description": "An invite-only place for Aly to save design ideas and get suggestions that fit our home. Still growing.",
+    "url": "https://aly.pfinn.org"
+  },
+  {
     "name": "Book tracker",
     "status": "Moving next",
     "description": "Keeps track of what I’m reading. Moving it here from Netlify.",
