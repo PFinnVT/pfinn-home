@@ -2,31 +2,37 @@
   {
     "name": "Sutton’s Games",
     "status": "Live",
-    "description": "Spelling and math practice for my 2nd grader. Spelling games use a new word list every week, and the math games follow the adding and taking-away strategies from her class.",
+    "description": "Spelling games, math practice, and Testing Buddy, a digital pet that earns presents when she answers questions. Built for my 2nd grader.",
     "url": "https://sutton.pfinn.org"
-  },
-    {
-    "name": "Finn/Toci Basketball",
-    "status": "Live",
-    "description": "Roster, schedule, drills, and game plans for the 2nd and 3rd grade team I coach.",
-    "url": "https://basketball.pfinn.org"
   },
   {
     "name": "Aly’s Design Book",
     "status": "Live",
-    "description": "An invite-only place for Aly to save design ideas and get suggestions that fit our home. Still growing.",
+    "description": "An invite-only interior design site for my wife, styled after our kitchen. Boards, a taste profile, and AI room ideas are on the way.",
     "url": "https://aly.pfinn.org"
+  },
+  {
+    "name": "Finn/Toci Basketball",
+    "status": "Live",
+    "description": "Rules, roster, schedule, drills, and practice plans for the 2nd/3rd grade Raptors team I coach.",
+    "url": "https://basketball.pfinn.org"
+  },
+  {
+    "name": "Golf Cart Mafia",
+    "status": "Live",
+    "description": "A joke page: two kittens in fedoras riding a lifted golf cart. The whole drawing is built from code, no image files.",
+    "url": "https://joke.pfinn.org"
   },
   {
     "name": "Book tracker",
     "status": "Moving next",
-    "description": "Keeps track of what I’m reading. Moving it here from Netlify.",
-    "url": ""
+    "description": "Keeps track of the books I’m reading. It works on Netlify today and is the next site moving to pfinn.org.",
+    "url": "https://d-and-d-and-d.netlify.app"
   },
   {
     "name": "D&D party site",
     "status": "Planning",
-    "description": "A site for my D&D group: our characters from D&D Beyond, plus help finding builds for new ones.",
+    "description": "A spot for my D&D group to log in, load their characters, and find build ideas. Being rebuilt from scratch with Astro.",
     "url": ""
   }
 ]
